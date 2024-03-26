@@ -17,7 +17,7 @@ Esto es un repositorios que contiene los Trabajos Practicos de la materia Ingeni
 
 
 
-![]https://fcytvirtual.uader.edu.ar/pluginfile.php/1/theme_klass/logo/1620075038/miuader.PNG
+![](https://fcytvirtual.uader.edu.ar/pluginfile.php/1/theme_klass/logo/1620075038/miuader.PNG)
 
 
 
