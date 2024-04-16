@@ -1,40 +1,30 @@
-class Impuesto:
-    def calcular(self, monto):
-        raise NotImplementedError("Método calcular debe ser implementado por las subclases")
+class CalculadoraImpuestos:
+    def __init__(self, base_imponible):
+        self.base_imponible = base_imponible
 
-class ImpuestoIVA(Impuesto):
-    def calcular(self, monto):
-        return monto * 0.21
+    def calcular_iva(self):
+        iva = self.base_imponible * 0.21
+        return iva
 
-class ImpuestoIIBB(Impuesto):
-    def calcular(self, monto):
-        return monto * 0.05
+    def calcular_iibb(self):
+        iibb = self.base_imponible * 0.05
+        return iibb
 
-class ImpuestoC_M(Impuesto):
-    def calcular(self, monto):
-        return monto * 0.012
+    def calcular_contribuciones_municipales(self):
+        contribuciones = self.base_imponible * 0.012
+        return contribuciones
+
     
-class FabricaImpuestos:
-    def crear_impuesto(self, tipo):
-        if tipo == "IVA":
-            return ImpuestoIVA()
-        else:
-            if tipo=="IIBB":
-             return ImpuestoIIBB()
-        
-            else:
-                if tipo == "C_M":
-                     return ImpuestoC_M()
-                else:
-                  raise ValueError(f"Tipo de impuesto desconocido: {tipo}")
 
-# Aplicando el Metodo Factory
-fabrica = FabricaImpuestos()
-impuesto_iva = fabrica.crear_impuesto("IVA")
-impuesto_iibb = fabrica.crear_impuesto("IIBB")
-impuesto_c_m= fabrica.crear_impuesto("C_M")
+# Ejemplo de uso:
+importe_base = 1000  # Reemplaza con el valor de importe base imponible que desees
+calculadora = CalculadoraImpuestos(importe_base)
 
-monto_factura = 195.000
-print(f"Impuesto IVA (Valor Agregado): $ {impuesto_iva.calcular(monto_factura):.3f}")
-print(f"Impuesto IIBB (Ingresos Brutos): $ {impuesto_iibb.calcular(monto_factura):.3f}")
-print(f"Impuesto C_M (Contribuciones Municipales): $ {impuesto_c_m.calcular(monto_factura):.3f}")
+iva = calculadora.calcular_iva()
+iibb = calculadora.calcular_iibb()
+contribuciones = calculadora.calcular_contribuciones_municipales()
+
+print(f"el importe base es: ${importe_base:.2f}")
+print(f"Importe a pagar de iva: ${iva:.2f}")
+print(f"Importe a pagar de iibb: ${iibb:.2f}")
+print(f"Importe a pagar de contribuciones municipales: ${contribuciones:.2f}")
